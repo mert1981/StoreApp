@@ -1,6 +1,11 @@
 ﻿@model List<Product>
 
-@foreach (var prd in Model)
-{
-    <partial name="_ProductCard" model="@prd" />
-}
+<div class="row my-3">
+
+    @foreach (var prd in Model)
+    {
+        <partial name="_ProductCard" model="@prd" />
+    }
+
+
+</div>
