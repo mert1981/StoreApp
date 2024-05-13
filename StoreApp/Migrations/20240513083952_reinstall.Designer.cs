@@ -10,8 +10,8 @@ using StoreApp.Models;
 namespace StoreApp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240512165257_productSeedData")]
-    partial class productSeedData
+    [Migration("20240513083952_reinstall")]
+    partial class reinstall
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,7 +19,33 @@ namespace StoreApp.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
 
-            modelBuilder.Entity("StoreApp.Models.Product", b =>
+            modelBuilder.Entity("Entities.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryName = "Book"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryName = "Electronic"
+                        });
+                });
+
+            modelBuilder.Entity("Entities.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,7 +90,7 @@ namespace StoreApp.Migrations
                         {
                             Id = 5,
                             Price = 1500m,
-                            ProductName = "DEck"
+                            ProductName = "Deck"
                         });
                 });
 #pragma warning restore 612, 618
