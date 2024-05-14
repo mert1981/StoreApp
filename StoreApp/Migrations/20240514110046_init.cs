@@ -7,7 +7,7 @@
 namespace StoreApp.Migrations
 {
     /// <inheritdoc />
-    public partial class reinstall : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,7 @@ namespace StoreApp.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CategoryName = table.Column<string>(type: "TEXT", nullable: true)
+                    CategoryName = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,12 +31,18 @@ namespace StoreApp.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ProductName = table.Column<string>(type: "TEXT", nullable: true),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
+                    ProductName = table.Column<string>(type: "TEXT", nullable: false),
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -50,25 +56,32 @@ namespace StoreApp.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "Price", "ProductName" },
+                columns: new[] { "Id", "CategoryId", "Price", "ProductName" },
                 values: new object[,]
                 {
-                    { 1, 17000m, "Computer" },
-                    { 2, 1000m, "Keyboard" },
-                    { 3, 500m, "Mouse" },
-                    { 4, 7000m, "Monitor" },
-                    { 5, 1500m, "Deck" }
+                    { 1, 2, 17000m, "Computer" },
+                    { 2, 2, 1000m, "Keyboard" },
+                    { 3, 2, 500m, "Mouse" },
+                    { 4, 2, 7000m, "Monitor" },
+                    { 5, 2, 1500m, "Deck" },
+                    { 6, 1, 50m, "History" },
+                    { 7, 1, 75m, "Hamlet" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_CategoryId",
+                table: "Products",
+                column: "CategoryId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Categories");
         }
     }
 }
