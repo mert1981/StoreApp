@@ -24,8 +24,14 @@
             <tr>
                 <td>@prd.Id</td>
                 <td>@prd.ProductName</td>
-                <td>@prd.Price</td>
+                <td>@prd.Price.ToString("c")</td>
                 <td>
+                    <div class="btn-group">
+                        <a class="btn btn-warning" asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-id="@prd.Id" >Update</a>
+                        <a class="btn btn-primary" target="_blank" asp-area="" asp-controller="Product" asp-action="Get" asp-route-id="@prd.Id">See</a>
+                        <a class="btn btn-danger" asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-id="@prd.Id" >Remove</a>
+  
+                    </div> 
                     
                 </td>
                 

@@ -1,0 +1,30 @@
+﻿@model Product
+
+<div class="text-center">
+    <div class="display-6">
+        Remove
+    </div>
+</div>
+
+<form method="post" asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group my-3">
+        <label asp-for="ProductName"></label>
+        <input asp-for="ProductName" disabled class="form-control" />
+        <span class="text-danger" asp-validation-for="ProductName"></span>
+    </div>
+    <div class="form-group my-3">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" disabled class="form-control" />
+        <span class="text-danger" asp-validation-for="Price"></span>
+    </div>
+    <div class="form-group my-3">
+        <div class="btn-group">
+            <button class="btn btn-danger" type="submit">Remove</button>
+            <a class="btn btn-outline-primary" asp-controller="Product" asp-action="Delete">Back To Products</a>
+        </div>
+
+    </div>
+
+</form>
