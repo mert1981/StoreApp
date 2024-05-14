@@ -21,7 +21,7 @@ namespace StoreApp.Controllers
         }
         public IActionResult Get([FromRoute(Name ="id")]int id) {
             //Product product = _manager.Product.GetOneProduct(id, false);
-            var model = _manager.ProductService.GetOneProduct(id,false);
+            var model = _manager.ProductService.GetOneProductForUpdate(id,false);
             return View(model);
         }
     }
