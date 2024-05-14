@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<form method="post" asp-action="Create">
+<form method="post" asp-action="Create" enctype="multipart/form-data">
 
     <div class="form-group my-3" >
         <label asp-for="ProductName"></label>
@@ -25,9 +25,21 @@
     </div>
 
     <div class="form-group my-3">
+        <label asp-for="Summary">Summary</label>
+        <input asp-for="Summary" class="form-control" />
+        <span class="text-danger" asp-validation-for="ProductName"></span>
+    </div>
+
+    <div class="form-group my-3">
         <label asp-for="Price"></label>
         <input asp-for="Price" class="form-control" />
         <span class="text-danger" asp-validation-for="Price"></span>
+    </div>
+
+    <div class="form-group my-3">
+        <label asp-for="ImageUrl"></label>
+        <input name="file" type="file" class="form-control" />
+        <span class="text-danger" asp-validation-for="ProductName"></span>
     </div>
     <div class="form-group my-3">
         <div class="btn-group">
