@@ -11,7 +11,7 @@ using StoreApp.Models;
 namespace StoreApp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240514172548_start")]
+    [Migration("20240515061451_start")]
     partial class start
     {
         /// <inheritdoc />

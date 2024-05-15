@@ -1,5 +1,14 @@
 ﻿@model ProductDto
 
-<h3>@Model.ProductName</h3>
-<h5>@Model.Price</h5>
-<a class="btn btn-outline-primary" asp-controller="Product" asp-action="Index" >Back</a>
+<div>
+    <div class="col-md-12" >
+        <div class="text-center">
+            <h2>@Model.ProductName</h2>
+            <img src="@Model?.ImageUrl" alt="@Model.ImageUrl" class="img-fluid shadow rounded-3 my-4" />
+
+            <p class="lead text-danger" > @Model.Price.ToString("c")</p>
+        </div>
+
+    </div>
+</div>
+
