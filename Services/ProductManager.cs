@@ -50,7 +50,7 @@ namespace Services
         public Product? GetOneProduct(int id, bool trackChanges)
         {
             var product = _manager.Product.GetOneProduct(id, trackChanges);
-            if (product is null )
+            if (product == null )
             {
                 throw new Exception("Product not found!");
             }

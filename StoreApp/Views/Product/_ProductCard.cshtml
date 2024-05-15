@@ -7,7 +7,16 @@
         <div class="card-body">
             <h5 class="card-title">@Model.ProductName</h5>
             <p class="card-text">@Model.Price.ToString("c")</p>
-            <a asp-controller="Product" asp-action="Get" asp-route-id="@Model.Id" class="btn btn-primary">Details</a>
+            <div class="btn-group">
+                <a asp-controller="Product" asp-action="Get" asp-route-id="@Model.Id" class="btn btn-primary">Details</a>
+                <form id="@Model.Id" asp-page="/cart" method="post">
+                    <input  type="hidden" asp-for="Id" />
+                    <input type="hidden" name="returnUrl" value="/Product/Get/@Model.Id" />
+                    <button type="submit" class="btn btn-outline-primary">Add To Cart</button>
+                </form>
+            </div>
+            
+            
         </div>
     </div>
 </div>
