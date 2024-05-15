@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreApp", "StoreApp\StoreApp.csproj", "{DC1C81AA-27F2-405B-8148-2CA60BDA2BB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreApp", "StoreApp\StoreApp.csproj", "{DC1C81AA-27F2-405B-8148-2CA60BDA2BB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{FCD8D629-02F8-48BB-8FE5-3808F37DDF2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{FCD8D629-02F8-48BB-8FE5-3808F37DDF2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{E5ADFE76-077E-4A9D-A6B1-780E4E9C8143}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositories\Repositories.csproj", "{E5ADFE76-077E-4A9D-A6B1-780E4E9C8143}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{45E67DEB-DF86-4D84-8F2C-3D49E63F2167}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{45E67DEB-DF86-4D84-8F2C-3D49E63F2167}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
