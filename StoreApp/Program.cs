@@ -13,6 +13,15 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<RepositoryContext>(options => { options.UseSqlite(builder.Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("StoreApp")); });
+//Session
+builder.Services.AddDistributedMemoryCache(); //önbellek saðlýyor. sunucu tarafýnda bilgileri tutuyor sunucu durunca sessionu unutuyoruz
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = "StoreApp.Session";
+    options.IdleTimeout = TimeSpan.FromMinutes(10); //10 dakika bu bilgileri tut sonra taze bir istek yoksa oturumu düþür
+});
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -22,7 +31,7 @@ builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 
-builder.Services.AddSingleton<Cart>();
+builder.Services.AddScoped<Cart>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
@@ -38,7 +47,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+//session
+app.UseSession();
+ 
 app.UseRouting();
 
 app.UseAuthorization();
