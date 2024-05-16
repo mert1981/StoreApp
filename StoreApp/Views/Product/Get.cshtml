@@ -1,4 +1,5 @@
-﻿@model ProductDto
+﻿@using StoreApp.Infrastructe.Extensions
+@model ProductDto
 
 <div>
     <div class="col-md-12" >
@@ -7,6 +8,17 @@
             <img src="@Model?.ImageUrl" alt="@Model.ImageUrl" class="img-fluid shadow rounded-3 my-4" />
 
             <p class="lead text-danger" > @Model.Price.ToString("c")</p>
+        <div class="btn-group" >
+            <a class="btn btn-primary" asp-area="" asp-controller="Product" asp-action="Index" >Back To Products</a>
+            <form id="@Model.Id" asp-page="/cart" method="post">
+                <input type="hidden" asp-for="Id"/>
+                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit" class="btn btn-outline-primary" >
+                    Add To Cart
+                </button>
+                <a class="btn btn-primary" asp-area="" asp-controller="Product" asp-action="Index" >Products</a>
+            </form>
+        </div>
         </div>
 
     </div>
