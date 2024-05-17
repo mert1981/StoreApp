@@ -15,11 +15,12 @@ namespace Repositories
         private readonly IOrderRepository _orderRepository;
         private readonly RepositoryContext _repositoryContext;
         
-        public RepositoryManager(IProductRepository productRepository,RepositoryContext context,ICategoryRepository categoryRepository)
+        public RepositoryManager(IProductRepository productRepository,RepositoryContext context,ICategoryRepository categoryRepository,IOrderRepository orderRepository)
         {
             _productRepository = productRepository;
             _repositoryContext = context;
             _categoryRepository = categoryRepository;
+            _orderRepository = orderRepository;
         }
         public IProductRepository Product => _productRepository;
 

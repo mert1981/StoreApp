@@ -22,6 +22,7 @@ namespace Services
 
         public void Complete(int id)
         {
+            _manager.Order.Complete(id);
             _manager.Save();
         }
 

@@ -14,7 +14,7 @@ namespace Entities.Models
         [Required(ErrorMessage ="Name is required.")]
         public String? Name { get; set; }
 
-        [Required(ErrorMessage = "Name is required.")]
+        [Required(ErrorMessage = "Line is required.")]
         public String? Line1 { get; set; }
 
         public String? Line2 { get; set; }

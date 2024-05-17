@@ -22,11 +22,11 @@ namespace Repositories
             .OrderBy(o => o.Shipped) 
             .ThenByDescending(o => o.OrderId);
 
-        public int NumberOfInProcess => _context.Orders.Count(o => o.Shipped==false);
+        public int NumberOfInProcess => _context.Orders.Count(o => o.Shipped.Equals(false));
 
         public void Complete(int id)
         {
-            var order = FindByCondition(o => o.OrderId == id,true);
+            var order = FindByCondition(o => o.OrderId.Equals(id),true);
             if (order is null)
             {
                 throw new Exception("Order could not found!");
