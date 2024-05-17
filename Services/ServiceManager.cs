@@ -11,6 +11,7 @@ namespace Services
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
+        private readonly IOrderService _orderService;
 
         public ServiceManager(IProductService productService,ICategoryService categoryService)
         {
@@ -21,5 +22,7 @@ namespace Services
         public IProductService ProductService => _productService;
 
         public ICategoryService CategoryService => _categoryService;
+
+        public IOrderService OrderService => _orderService;
     }
 }

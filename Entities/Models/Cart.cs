@@ -8,7 +8,7 @@
             Lines = new List<CartLine>();
         }
         
-        public void AddItem(Product product, int quantity)
+        public virtual void AddItem(Product product, int quantity)
         {
             CartLine? line = Lines.Where(l => l.Product.Id == product.Id).FirstOrDefault();
             if (line is null)
@@ -23,13 +23,13 @@
             {
                 line.Quantity += quantity;
             }
-        }
+        } // virtual bir sınıf devralındığında bir propun override geçersiz kılınmasını sağlar
 
-        public void RemoveLine(Product product) => Lines.RemoveAll(l => l.Product.Id == product.Id );
+        public virtual void RemoveLine(Product product) => Lines.RemoveAll(l => l.Product.Id == product.Id );
 
 
         public decimal ComputeTotalValue() => Lines.Sum(e => e.Product.Price * e.Quantity);
-        public void Clear() => Lines.Clear();
+        public virtual void Clear() => Lines.Clear();
     
     }
 }

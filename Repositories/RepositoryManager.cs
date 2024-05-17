@@ -12,6 +12,7 @@ namespace Repositories
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IProductRepository _productRepository;
+        private readonly IOrderRepository _orderRepository;
         private readonly RepositoryContext _repositoryContext;
         
         public RepositoryManager(IProductRepository productRepository,RepositoryContext context,ICategoryRepository categoryRepository)
@@ -24,6 +25,7 @@ namespace Repositories
 
         public ICategoryRepository Category => _categoryRepository;
 
+        public IOrderRepository Order => _orderRepository;
 
         public void Save()
         {
