@@ -11,8 +11,8 @@ using StoreApp.Models;
 namespace StoreApp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240517120923_init")]
-    partial class init
+    [Migration("20240517162507_start")]
+    partial class start
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -127,6 +127,9 @@ namespace StoreApp.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("ShowCase")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Summary")
                         .HasColumnType("TEXT");
 
@@ -144,6 +147,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/1.jpeg",
                             Price = 17000m,
                             ProductName = "Computer",
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -153,6 +157,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/2.jpeg",
                             Price = 1000m,
                             ProductName = "Keyboard",
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -162,6 +167,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/3.jpeg",
                             Price = 500m,
                             ProductName = "Mouse",
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -171,6 +177,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/4.jpeg",
                             Price = 7000m,
                             ProductName = "Monitor",
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -180,6 +187,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/5.jpeg",
                             Price = 1500m,
                             ProductName = "Deck",
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -189,6 +197,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/6.jpeg",
                             Price = 50m,
                             ProductName = "History",
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -198,6 +207,37 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/7.jpeg",
                             Price = 75m,
                             ProductName = "Hamlet",
+                            ShowCase = false,
+                            Summary = ""
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 2,
+                            ImageUrl = "/img/8.jpeg",
+                            Price = 1500m,
+                            ProductName = "Hp-pen",
+                            ShowCase = true,
+                            Summary = ""
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = 2,
+                            ImageUrl = "/img/9.jpeg",
+                            Price = 8000m,
+                            ProductName = "IPad",
+                            ShowCase = true,
+                            Summary = ""
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoryId = 2,
+                            ImageUrl = "/img/10.jpeg",
+                            Price = 70000m,
+                            ProductName = "Macbook Pro",
+                            ShowCase = true,
                             Summary = ""
                         });
                 });

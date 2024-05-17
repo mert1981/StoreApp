@@ -1,0 +1,33 @@
+﻿@using StoreApp.Infrastructe.Extensions
+@model Product 
+
+
+<div class="col-md-4 col-sm-12 my-3" >
+    <div class="card" style="width: 18rem;">
+        <div class="card-header text-center"> @Model.ProductName </div>
+        
+        <img class="card-img-top width:200px" src="@Model?.ImageUrl" alt="product" style="height: auto; min-height: 200px; max-height: 200px; width: 100%; object-fit: contain;">
+        <div class="card-body">
+            <div class="text-danger text-center lead p-2 rounded-2" >
+                @Model?.Price.ToString("c2")
+            </div>
+            <p class="card-text" >@Model?.Summary</p>
+            
+            <div class="d-flex justify-content-center">
+                <div class="btn-group">
+                
+                    <a asp-controller="Product" asp-action="Get" asp-route-id="@Model.Id" class="btn btn-outline-secondary rounded-2">Details</a>
+                    <form id="@Model.Id" asp-page="/cart" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                        <button type="submit" class="btn btn-outline-primary mx-1">Add To Cart</button>
+                    </form>
+                </div>
+                
+            </div>
+
+        </div>
+            
+       
+    </div>
+</div>

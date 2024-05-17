@@ -4,6 +4,7 @@ using Repositories;
 using Repositories.Contracts;
 using Services;
 using Services.Contracts;
+using StoreApp.Infrastructe.Extensions;
 using StoreApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,30 +13,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<RepositoryContext>(options => { options.UseSqlite(builder.Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("StoreApp")); });
+builder.Services.ConfigureDbContext(builder.Configuration);
 //Session
-builder.Services.AddDistributedMemoryCache(); //önbellek saðlýyor. sunucu tarafýnda bilgileri tutuyor sunucu durunca sessionu unutuyoruz
-builder.Services.AddSession(options =>
-{
-    options.Cookie.Name = "StoreApp.Session";
-    options.IdleTimeout = TimeSpan.FromMinutes(10); //10 dakika bu bilgileri tut sonra taze bir istek yoksa oturumu düþür
-});
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.ConfigureSession();
 
+builder.Services.ConfigureRepositoryRegistirion();
 
-builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-
-builder.Services.AddScoped<IServiceManager, ServiceManager>();
-builder.Services.AddScoped<IProductService, ProductManager>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IOrderService, OrderManager>();
-
-builder.Services.AddScoped<Cart>(c => SessionCart.GetCart(c));
+builder.Services.ConfigureServiceRegistirion();
 
 builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.ConfigureRouting(); //url küçük harflere çeviren extension
 
 var app = builder.Build();
 
@@ -53,7 +41,7 @@ app.UseStaticFiles();
 app.UseSession();
  
 app.UseRouting();
-
+app.ConfigureLocalization(); //Uygulamaya yerel özellikler içeren yapýyý kullanýyoruz.
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
@@ -73,6 +61,7 @@ app.UseEndpoints(endpoints =>
     
 );
 
+app.ConfigureAndCheckMigration(); //Application Extension
 
 
 app.Run();
