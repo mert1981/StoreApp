@@ -63,6 +63,5 @@ app.UseEndpoints(endpoints =>
 );
 
 app.ConfigureAndCheckMigration(); //Application Extension
-
-
+app.ConfigureDefaultAdminUser();
 app.Run();
