@@ -5,6 +5,7 @@ using StoreApp.Models;
 using Services.Contracts;
 using Services;
 using Entities.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace StoreApp.Infrastructure.Extensions
 {
@@ -13,7 +14,25 @@ namespace StoreApp.Infrastructure.Extensions
         public static void ConfigureDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<RepositoryContext>(options =>
-            { options.UseSqlite(configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("StoreApp")); });
+            { options.UseSqlite(configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("StoreApp"));
+                options.EnableSensitiveDataLogging(true); 
+                
+            
+            });
+        }
+
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedEmail = false; //kişi mailini onaylamazsa oturum açamaz
+                options.User.RequireUniqueEmail = true; //kişi email ile ilişkilendirilecek
+                options.Password.RequireUppercase = false; //büyük harf olacak mı 
+                options.Password.RequireLowercase = false; //küçük harf olacak mı
+                options.Password.RequireDigit = false; //sayı gereksin mi
+                options.Password.RequiredLength = 6; //kaç harf olsun 
+            })
+                .AddEntityFrameworkStores<RepositoryContext>();
         }
 
         public static void ConfigureSession(this IServiceCollection services)
