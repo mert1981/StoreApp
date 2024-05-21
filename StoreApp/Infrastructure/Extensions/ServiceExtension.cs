@@ -6,7 +6,7 @@ using Services.Contracts;
 using Services;
 using Entities.Models;
 
-namespace StoreApp.Infrastructe.Extensions
+namespace StoreApp.Infrastructure.Extensions
 {
     public static class ServiceExtension
     {

@@ -1,5 +1,5 @@
 ﻿using Entities.Models;
-using StoreApp.Infrastructe.Extensions;
+using StoreApp.Infrastructure.Extensions;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 

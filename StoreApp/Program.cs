@@ -4,7 +4,7 @@ using Repositories;
 using Repositories.Contracts;
 using Services;
 using Services.Contracts;
-using StoreApp.Infrastructe.Extensions;
+using StoreApp.Infrastructure.Extensions;
 using StoreApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);

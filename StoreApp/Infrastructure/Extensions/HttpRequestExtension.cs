@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace StoreApp.Infrastructe.Extensions
+namespace StoreApp.Infrastructure.Extensions
 {
     public static class HttpRequestExtension
     {
