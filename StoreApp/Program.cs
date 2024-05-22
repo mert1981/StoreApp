@@ -45,6 +45,11 @@ app.UseRouting();
 app.ConfigureLocalization(); //Uygulamaya yerel özellikler içeren yapýyý kullanýyoruz.
 app.UseAuthorization();
 
+//oturum açma ve yetkilendirme
+//routing ve endpoint arasýnda olmalý 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapAreaControllerRoute(
