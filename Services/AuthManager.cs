@@ -65,6 +65,19 @@ namespace Services
             throw new Exception("Bir hata oluştu");
         }
 
+        public async Task<IdentityResult> ResetPassword(ResetPasswordDto model)
+        {
+            var user = await GetOneUser(model.UserName);
+
+            if (user is not null)
+            {
+                await _userManager.RemovePasswordAsync(user);
+                var result = await _userManager.AddPasswordAsync(user,model.Password);
+                return result;
+            }
+            throw new Exception("Şifre yenilenirken bir hata oluştu.");
+        }
+
         public async Task Update(UserDtoForUpdate userDto)
         {
             var user = await GetOneUser(userDto.UserName);

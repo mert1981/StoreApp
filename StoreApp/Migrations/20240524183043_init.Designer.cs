@@ -11,8 +11,8 @@ using StoreApp.Models;
 namespace StoreApp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240521183912_ReInstall")]
-    partial class ReInstall
+    [Migration("20240524183043_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -270,19 +270,19 @@ namespace StoreApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b47eece0-d5a2-4455-bc55-fec77a1802f7",
+                            Id = "4da5ea98-09f1-459e-a97e-451e763663a9",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "5b801861-82c7-4a9c-8501-c54797a855a8",
+                            Id = "1ed39969-4909-44d2-9e7d-095ee0983bb0",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "07158638-2247-454b-a9b8-319a80f0cf4e",
+                            Id = "928d0e1b-3e5b-44e0-bb05-bee2c6db34f4",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
