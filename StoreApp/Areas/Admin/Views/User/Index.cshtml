@@ -24,9 +24,10 @@
                 <td>-</td>
                 <td>
                     <div class="btn-group">
-                        <a class="btn btn-sm btn-warning" asp-controller="User" asp-action="Update" asp-route-id="@user.UserName">Edit</a>
-                        <a class="btn btn-sm btn-info" asp-controller="User" asp-action="ResetPassword" >Reset Password</a>
-                        <a class="btn btn-sm btn-danger" >Delete</a>
+                        <a class="btn btn-sm btn-warning rounded-0" asp-area="Admin" asp-controller="User" asp-action="Update" asp-route-id="@user.UserName">Güncelle</a>
+                        <a class="btn btn-sm btn-info rounded-0" asp-area="Admin" asp-controller="User" asp-action="ResetPassword">Şifreyi Sıfırla</a>
+                        
+                        
                     </div>
                 </td>
             </tr>

@@ -1,6 +1,7 @@
 ﻿using Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
+using System.Globalization;
 
 namespace StoreApp.Areas.Admin.Controllers
 {
@@ -77,6 +78,25 @@ namespace StoreApp.Areas.Admin.Controllers
             }
             return View();
                 
+        }
+
+        public async Task<IActionResult> DeleteOneUser()
+        {
+            
+           
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("DeleteOneUser")]
+        public async Task<IActionResult> DeleteOneUserPOST([FromForm] UserDto userDto)
+        {
+            var result = await _manager.AuthService.DeleteOneUser(userDto.UserName);
+            return result.Succeeded 
+                ? RedirectToAction("Index") 
+                : View();
         }
     }
 }
