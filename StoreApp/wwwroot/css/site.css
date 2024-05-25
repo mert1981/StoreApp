@@ -26,5 +26,12 @@ body {
 }
 
 .footer {
-    height: 100px;
+    height: 40px;
+    
 }
+#sliderSection {
+    position: relative;
+    z-index: 1;
+}
+
+

@@ -1,16 +1,19 @@
 ﻿@model Order 
 
+<div class="text-center">
+    <h3>Ödeme Sayfası</h3>
+</div>
 
 <form method="post" asp-action="Checkout">
 
     <div class="form-group my-3" >
-        <label asp-for="Name" ></label>
+        <label asp-for="Name" > İsim </label>
         <input class="form-control" asp-for="Name" />
         <span class="text-danger" asp-validation-for="Name" ></span>
     </div>
 
     <div class="form-group my-3">
-        <label asp-for="Line1"></label>
+        <label asp-for="Line1">Adres</label>
         <input class="form-control" asp-for="Line1" />
         <span class="text-danger" asp-validation-for="Line1"></span>
     </div>
@@ -28,20 +31,20 @@
     </div>
 
     <div class="form-group my-3">
-        <label asp-for="City"></label>
+        <label asp-for="City">Şehir</label>
         <input class="form-control" asp-for="City" />
         <span class="text-danger" asp-validation-for="City"></span>
     </div>
 
     <div class="form-group my-3">
         <input asp-for="GiftWrap" />
-        <label>Gift wrap these item.</label>
+        <label>Hediye paketi istiyorum.</label>
         
         
     </div>
 
     <div class="text-center">
-        <button type="submit" class="btn btn-primary">Complete Order</button>
+        <button type="submit" class="btn btn-primary">Siparişi Tamamla</button>
     </di>
 
 </form>

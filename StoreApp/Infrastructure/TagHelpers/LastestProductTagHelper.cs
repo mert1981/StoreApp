@@ -24,7 +24,7 @@ namespace StoreApp.Infrastructure.TagHelpers
             div.Attributes.Add("class", "my-3"); //class gördüğü zaman içine my-3 ekleyecek
 
             TagBuilder h6 = new TagBuilder("h6"); //h6 tagi inşaa ediyoruz
-            h6.Attributes.Add("class", "lead");
+            
 
             //h6 div içinde olduğu için onu divin içine yerleştriyoruz
             h6.InnerHtml.AppendHtml("Lastest Product");
