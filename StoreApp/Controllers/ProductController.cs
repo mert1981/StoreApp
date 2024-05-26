@@ -18,11 +18,13 @@ namespace StoreApp.Controllers
         public IActionResult Index(ProductRequestParameters p)
         {
             var products = _manager.ProductService.GetAllProductsWithDetails(p);
+            ViewData["Title"] = "Ürünler";
             return View(products);
         }
         public IActionResult Get([FromRoute(Name ="id")]int id) {
             //Product product = _manager.Product.GetOneProduct(id, false);
             var model = _manager.ProductService.GetOneProductForUpdate(id,false);
+            ViewData["Title"] = model?.ProductName;
             return View(model);
         }
     }

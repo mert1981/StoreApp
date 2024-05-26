@@ -9,6 +9,7 @@ using StoreApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers().AddApplicationPart(typeof(Presenation.AssemblyReference).Assembly);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
@@ -63,9 +64,10 @@ app.UseEndpoints(endpoints =>
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
     endpoints.MapRazorPages();
-}
-    
-);
+    endpoints.MapControllers();
+});
+
+
 
 app.ConfigureAndCheckMigration(); //Application Extension
 app.ConfigureDefaultAdminUser();

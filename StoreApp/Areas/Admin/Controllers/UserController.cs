@@ -80,18 +80,12 @@ namespace StoreApp.Areas.Admin.Controllers
                 
         }
 
-        public async Task<IActionResult> DeleteOneUser()
-        {
-            
-           
-            return View();
-        }
+        
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ActionName("DeleteOneUser")]
-        public async Task<IActionResult> DeleteOneUserPOST([FromForm] UserDto userDto)
+        public async Task<IActionResult> DeleteOneUser([FromForm] UserDto userDto)
         {
             var result = await _manager.AuthService.DeleteOneUser(userDto.UserName);
             return result.Succeeded 

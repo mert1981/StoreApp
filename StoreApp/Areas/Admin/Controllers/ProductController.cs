@@ -1,5 +1,7 @@
 ﻿using Entities.Dtos;
 using Entities.Models;
+using Entities.RequestParameters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Services.Contracts;
@@ -7,6 +9,7 @@ using Services.Contracts;
 namespace StoreApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    
     public class ProductController : Controller
     {
         private readonly IServiceManager _manager;
@@ -14,9 +17,10 @@ namespace StoreApp.Areas.Admin.Controllers
         {
             _manager = manager;
         }
-        public IActionResult Index()
+        public IActionResult Index([FromQuery] ProductRequestParameters p)
         {
-            var model = _manager.ProductService.GetAllProduct(false);
+            ViewData["Title"] = "Products";
+            var model = _manager.ProductService.GetAllProductsWithDetails(p);
             return View(model);
         }
         public IActionResult Create() {
@@ -42,6 +46,7 @@ namespace StoreApp.Areas.Admin.Controllers
                 productDto.ImageUrl = String.Concat("/img/",file.FileName);
 
                 _manager.ProductService.CreateProduct(productDto);
+                TempData["success"] = $"{productDto.ProductName} başarıyla eklendi.";
                 return RedirectToAction("Index");
             }
            return View();
@@ -51,6 +56,7 @@ namespace StoreApp.Areas.Admin.Controllers
         {
             ViewBag.Categories = _manager.CategoryService.GetAllCategories(false);
             var model = _manager.ProductService.GetOneProductForUpdate(id,false);
+            ViewData["Title"] = model?.ProductName;
             return View(model);
         }
 
@@ -86,6 +92,7 @@ namespace StoreApp.Areas.Admin.Controllers
         public IActionResult DeletePOST([FromRoute(Name = "id")] int id )
         {
             _manager.ProductService.DeleteOneProduct(id);
+            TempData["danger"] = $"Kitap başarıyla silindi.";
             return RedirectToAction("Index");
         }
     }
