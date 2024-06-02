@@ -42,16 +42,6 @@ Her iki projeyi de yerel olarak kurmak ve çalıştırmak için aşağıdaki ad�
 
 Projeleri çalıştırmadan önce .NET Core SDK ve SQL Server'ın kurulu olması gerekmektedir.
 
-### Kurulum
-
-#### BTkAkademi
-
-```bash
-git clone https://github.com/cetinyazici/ASP.NET-Core-MVC
-cd BTkAkademi
-dotnet restore
-dotnet run
-```
 
 #### StoreApp
 
